@@ -1,6 +1,6 @@
 import React from 'react'
 import "./modal.css"
-export default function Modal({ isOpen }) {
+export default function Modal({ isOpen,setFecharModal, children}) {
   if (!isOpen) return null;
 
   // aqui você vai fazer uma renderização condicional e passar o booleano
@@ -8,7 +8,10 @@ export default function Modal({ isOpen }) {
   // é apenas isso e ja te expico os estilos q botei dps volto
   return (
     <div className='container'>
-      <div className='modal'></div>
+      <div className='modal'>
+<div>{children}</div>
+<button className='fechar' onClick={setFecharModal}>X</button>
+      </div>
     </div>
   )
 }

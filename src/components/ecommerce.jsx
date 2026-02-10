@@ -1,7 +1,7 @@
 import "../app.css";
 import { Banner } from "./banner";
 import { useMensagem } from "../hooks/useMensagem";
-import {useState} from "react"
+import {Children, useState} from "react"
 import Modal from "./Modal";
 
 
@@ -23,18 +23,37 @@ export const Card = ({ image, title, description }) => {
 };
 
 
-function handleModal(){
-  setAbrirModal(true)
-}
+
 
 export const Ecommerce = () => {
   const [abrirModal, setAbrirModal] = useState(false);
+
+  function handleModal(){
+  setAbrirModal(true)
+}
   return (
     <div className="container">
       <div className="main-card">
     <div> 
       <button  className="cadastro" onClick={handleModal}>Login</button>
-  <Modal isOpen={abrirModal} />
+  <Modal isOpen={abrirModal} setFecharModal={() => setAbrirModal(!abrirModal)}
+>
+<form>
+<div>
+  <label For="email">  Email</label>
+<input type="email" id="email" placeholder="Seu email"/>
+</div>
+<div>
+  <label For="senha">  Senha</label>
+  <input type="password" id="senha" placeholder="Sua senha" />
+  
+</div>
+<>
+<button className="enviar">Enviar</button></>
+
+</form>
+  </Modal>
+
      </div>
         <Banner />
         <h1>Headphones For You</h1>
